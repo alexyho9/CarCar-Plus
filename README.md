@@ -2,8 +2,8 @@
 
 Team:
 
-* Person 1 - Which microservice?
-* Person 2 - Which microservice?
+* Alex Ho - Car Sales
+* Calvin Mach - Auto Servicing
 
 ## Design
 
