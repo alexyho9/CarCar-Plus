@@ -1,7 +1,0 @@
-import React, {useEffect, useState} from 'react';
-
-
-const CustomerList = () => {
-  console.log("This page loads");
-}
-export default CustomerList;

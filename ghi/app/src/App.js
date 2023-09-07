@@ -13,7 +13,7 @@ import AutomobileForm from './AutomobileForm';
 // Sales Page Imports
 import SalespeopleList from './SalespeopleList';
 import SalespeopleForm from './SalespeopleForm';
-import CustomerList from './CustomerList';
+import CustomerList from './CustomerList.js';
 
 function App() {
   return (
