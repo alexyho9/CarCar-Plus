@@ -6,6 +6,8 @@ import ManufacturerList from './ManufacturerList';
 import ManufacturerForm from './ManufacturerForm';
 import ModelList from './ModelList';
 import ModelForm from './ModelForm';
+import AutomobileList from './AutomobileList';
+import AutomobileForm from './AutomobileForm';
 // Service Page Imports
 
 // Sales Page Imports
@@ -23,8 +25,8 @@ function App() {
           <Route path="manufacturers/new" element={<ManufacturerForm />} />
           <Route path="models" element={<ModelList />} />
           <Route path="models/new" element={<ModelForm />} />
-          <Route path="automobiles" element={<MainPage />} />
-          <Route path="automobiles/new" element={<MainPage />} />
+          <Route path="automobiles" element={<AutomobileList />} />
+          <Route path="automobiles/new" element={<AutomobileForm />} />
         </Route>
         <Route path="services">
           <Route path="technicians" element={<MainPage />} />
