@@ -4,6 +4,8 @@ import Nav from './Nav';
 // Inventory Page Imports
 import ManufacturerList from './ManufacturerList';
 import ManufacturerForm from './ManufacturerForm';
+import ModelList from './ModelList';
+import ModelForm from './ModelForm';
 // Service Page Imports
 
 // Sales Page Imports
@@ -19,8 +21,8 @@ function App() {
         <Route path="inventory">
           <Route path="manufacturers" element={<ManufacturerList />} />
           <Route path="manufacturers/new" element={<ManufacturerForm />} />
-          <Route path="models" element={<MainPage />} />
-          <Route path="models/new" element={<MainPage />} />
+          <Route path="models" element={<ModelList />} />
+          <Route path="models/new" element={<ModelForm />} />
           <Route path="automobiles" element={<MainPage />} />
           <Route path="automobiles/new" element={<MainPage />} />
         </Route>
