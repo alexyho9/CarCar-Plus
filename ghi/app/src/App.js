@@ -1,6 +1,16 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import MainPage from './MainPage';
 import Nav from './Nav';
+// Inventory Page Imports
+// import ManufacturerList from './ManufacturerList';
+// import ManufacturerForm from './ManufacturerForm';
+// Service Page Imports
+import TechnicianList from './TechnicianList';
+import TechnicianForm from './TechnicianForm';
+import AppointmentList from './AppointmentList';
+import AppointmentForm from './AppointmentForm';
+// Sales Page Imports
+
 
 function App() {
   return (
