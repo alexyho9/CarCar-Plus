@@ -11,7 +11,9 @@ import AutomobileForm from './AutomobileForm';
 // Service Page Imports
 
 // Sales Page Imports
-
+import SalespeopleList from './SalespeopleList';
+import SalespeopleForm from './SalespeopleForm';
+import CustomerList from './CustomerList';
 
 function App() {
   return (
@@ -35,9 +37,9 @@ function App() {
           <Route path="appointments/new" element={<MainPage />} />
         </Route>
         <Route path="sales">
-          <Route path="salespeople" element={<MainPage />} />
-          <Route path="salespeople/new" element={<MainPage />} />
-          <Route path="customers" element={<MainPage />} />
+          <Route path="salespeople" element={<SalespeopleList />} />
+          <Route path="salespeople/new" element={<SalespeopleForm />} />
+          <Route path="customers" element={<CustomerList />} />
           <Route path="customers/new" element={<MainPage />} />
           <Route path="sales" element={<MainPage />} />
           <Route path="sales/new" element={<MainPage />} />
