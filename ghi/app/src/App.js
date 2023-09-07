@@ -16,11 +16,12 @@ function App() {
   return (
     <BrowserRouter>
       <Nav />
+      <div className="container">
       <Routes>
         <Route path="/" element={<MainPage />} />
         <Route path="inventory">
-          <Route path="manufacturers" element={<MainPage />} />
-          <Route path="manufacturers/new" element={<MainPage />} />
+          <Route path="manufacturers" element={<ManufacturerList />} />
+          <Route path="manufacturers/new" element={<ManufacturerForm />} />
           <Route path="models" element={<MainPage />} />
           <Route path="models/new" element={<MainPage />} />
           <Route path="automobiles" element={<MainPage />} />
@@ -41,6 +42,7 @@ function App() {
           <Route path="sales/new" element={<MainPage />} />
         </Route>
       </Routes>
+      </div>
     </BrowserRouter>
   );
 }
