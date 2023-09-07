@@ -2,8 +2,12 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import MainPage from './MainPage';
 import Nav from './Nav';
 // Inventory Page Imports
-// import ManufacturerList from './ManufacturerList';
-// import ManufacturerForm from './ManufacturerForm';
+import ManufacturerList from './ManufacturerList';
+import ManufacturerForm from './ManufacturerForm';
+import ModelList from './ModelList';
+import ModelForm from './ModelForm';
+import AutomobileList from './AutomobileList';
+import AutomobileForm from './AutomobileForm';
 // Service Page Imports
 import TechnicianList from './TechnicianList';
 import TechnicianForm from './TechnicianForm';
@@ -22,10 +26,10 @@ function App() {
         <Route path="inventory">
           <Route path="manufacturers" element={<ManufacturerList />} />
           <Route path="manufacturers/new" element={<ManufacturerForm />} />
-          <Route path="models" element={<MainPage />} />
-          <Route path="models/new" element={<MainPage />} />
-          <Route path="automobiles" element={<MainPage />} />
-          <Route path="automobiles/new" element={<MainPage />} />
+          <Route path="models" element={<ModelList />} />
+          <Route path="models/new" element={<ModelForm />} />
+          <Route path="automobiles" element={<AutomobileList />} />
+          <Route path="automobiles/new" element={<AutomobileForm />} />
         </Route>
         <Route path="services">
           <Route path="technicians" element={<MainPage />} />

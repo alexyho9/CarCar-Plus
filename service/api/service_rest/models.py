@@ -18,6 +18,8 @@ class Technician(models.Model):
 
 
 class Appointment(models.Model):
+    vin = models.CharField(max_length=17, null=True)
+    vip_status = models.BooleanField(default=False, null=True)
     date_time = models.DateTimeField()
     reason = models.CharField(max_length=100)
     status = models.CharField(max_length=20, default="created")

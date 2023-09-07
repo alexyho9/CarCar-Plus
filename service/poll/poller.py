@@ -43,6 +43,7 @@ def get_customers():
 
 
 
+
 def poll(repeat=True):
     while True:
         print('Service poller polling for data')
