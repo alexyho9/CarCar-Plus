@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import MainPage from './MainPage';
 import Nav from './Nav';
+import ManufacturerList from './ManufacturerList';
 
 function App() {
   return (
@@ -9,7 +10,7 @@ function App() {
       <Routes>
         <Route path="/" element={<MainPage />} />
         <Route path="inventory">
-          <Route path="manufacturers" element={<MainPage />} />
+          <Route path="manufacturers" element={<ManufacturerList />} />
           <Route path="manufacturers/new" element={<MainPage />} />
           <Route path="models" element={<MainPage />} />
           <Route path="models/new" element={<MainPage />} />
