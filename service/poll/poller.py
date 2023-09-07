@@ -27,6 +27,7 @@ def get_autos():
             )
 
 
+
 def poll(repeat=True):
     while True:
         print('Service poller polling for data')
