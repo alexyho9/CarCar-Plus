@@ -1,13 +1,19 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import MainPage from './MainPage';
 import Nav from './Nav';
+// Inventory Page Imports
 import ManufacturerList from './ManufacturerList';
 import ManufacturerForm from './ManufacturerForm';
+// Service Page Imports
+
+// Sales Page Imports
+
 
 function App() {
   return (
     <BrowserRouter>
       <Nav />
+      <div className="container">
       <Routes>
         <Route path="/" element={<MainPage />} />
         <Route path="inventory">
@@ -33,6 +39,7 @@ function App() {
           <Route path="sales/new" element={<MainPage />} />
         </Route>
       </Routes>
+      </div>
     </BrowserRouter>
   );
 }
