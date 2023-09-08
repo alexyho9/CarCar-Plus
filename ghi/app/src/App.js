@@ -17,6 +17,7 @@ import CustomerList from './CustomerList.js';
 import CustomerForm from './CustomerForm';
 import SaleList from './SaleList.js';
 import SaleForm from './SaleForm';
+import SalespersonHistory from './SalespersonHistory';
 
 function App() {
   return (
@@ -46,6 +47,7 @@ function App() {
           <Route path="customers/new" element={<CustomerForm />} />
           <Route path="sales" element={<SaleList />} />
           <Route path="sales/new" element={<SaleForm />} />
+          <Route path="sales/history" element={<SalespersonHistory />} />
         </Route>
       </Routes>
       </div>
