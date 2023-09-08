@@ -80,6 +80,20 @@ def api_appointments(request):
             return response
 
 
+@require_http_methods(["DELETE"])
+def api_appointment(request, pk):
+    if request.method == "DELETE":
+        try:
+            appointment = Appointment.objects.get(id=pk)
+            appointment.delete()
+            return JsonResponse(
+                encoder=AppointmentEncoder,
+                safe=False,
+            )
+        except Appointment.DoesNotExist:
+            return JsonResponse({"message": "Does not exist"})
+
+
 
 @require_http_methods(["PUT"])
 def api_cancel_appointment(request, pk):
