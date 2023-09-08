@@ -67,12 +67,13 @@ def api_appointments(request):
             content["technician"] = technician
             del content["technician_id"]
             appointment = Appointment.objects.create(**content)
+
             return JsonResponse(
                 appointment,
                 encoder=AppointmentEncoder,
                 safe=False,
             )
-        except Exception as e:
+        except:
             response = JsonResponse(
                 {"message": "Could not make appointment."}
             )
