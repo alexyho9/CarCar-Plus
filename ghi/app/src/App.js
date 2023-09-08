@@ -32,10 +32,10 @@ function App() {
           <Route path="automobiles/new" element={<AutomobileForm />} />
         </Route>
         <Route path="services">
-          <Route path="technicians" element={<MainPage />} />
-          <Route path="technicians/new" element={<MainPage />} />
-          <Route path="appointments" element={<MainPage />} />
-          <Route path="appointments/new" element={<MainPage />} />
+          <Route path="technicians" element={<TechnicianList />} />
+          <Route path="technicians/new" element={<TechnicianForm />} />
+          <Route path="appointments" element={<AppointmentList />} />
+          <Route path="appointments/new" element={<AppointmentForm />} />
         </Route>
         <Route path="sales">
           <Route path="salespeople" element={<MainPage />} />

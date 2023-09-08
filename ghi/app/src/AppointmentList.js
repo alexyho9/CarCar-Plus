@@ -1,45 +1,84 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom'
 
-
-
 function AppointmentList() {
-    const [appointmentTables, setappointmentTables] = useState([]);
-    useEffect(()=> {console.log(appointmentTables)}, [appointmentTables]);
+  const [appointments, setAppointments] = useState([]);
+  // useEffect(()=> {console.log(appointments)}, [appointments]);
 
-    async function getAppointments() {
-        const url = 'http://localhost:8080/api/appointments/'
+  function formatDate(dateTime) {
+    const date = new Date(dateTime);
+    return date.toLocaleDateString();
+  }
 
-        try {
-            const response = await fetch(url);
-            if (response.ok) {
-                const data = await response.json()
+  function formatTime(dateTime) {
+    const date = new Date(dateTime);
+    return date.toLocaleTimeString();
+  }
 
-                let requests = [];
-                for (let appointment of data.appointment) {
-                    let detailUrl = `http://localhost:8080${appointment.href}`;
-                    requests.push(fetch(detailUrl));
-                }
+  async function fetchAppointments() {
+    const url = 'http://localhost:8080/api/appointments/';
 
-                let responses = await Promise.all(requests);
-                let tables = [];
-
-                for (let appointmentResponse of responses) {
-                    if (appointmentResponse.ok) {
-                        let details = await appointmentResponse.json();
-                        appointmentTables.push(details);
-                    } else {
-                        console.error(appointmentResponse);
-                    }
-                }
-            }
-        }
+    try {
+      const response = await fetch(url);
+      if (response.ok) {
+        const data = await response.json();
+        setAppointments(data.appointments);
+      } else {
+        console.error('Failed to get appointment:', response.status);
+      }
+    } catch (error) {
+      console.error('Error while getting appointments:', error);
     }
-    useEffect(() => {
-        getAppointments();
-    }, []);
+  }
 
-    function
+
+  useEffect(() => {
+    fetchAppointments();
+  }, []);
+
+
+  return (
+    <div className="shadow p-4 mt-4">
+      <h1>Appointment</h1>
+      <table className="table table-striped">
+        <thead>
+          <tr>
+            <th>VIN</th>
+            <th>Is VIP?</th>
+            <th>Customer</th>
+            <th>Date</th>
+            <th>Time</th>
+            <th>Technician</th>
+            <th>Reason</th>
+            <th>Status</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {appointments.map(appointment => (
+            <tr key={appointment.href}>
+              <td>{appointment.vin}</td>
+              <td>{appointment.vip_status ? "Yes" : "No"}</td>
+              <td>{appointment.customer}</td>
+              <td>{formatDate(appointment.date_time)}</td>
+              <td>{formatTime(appointment.date_time)}</td>
+              <td>{appointment.technician.first_name} {appointment.technician.last_name}</td>
+              <td>{appointment.reason}</td>
+              <td>{appointment.status}</td>
+              <td>
+                {appointment.status === 'created' && (
+                  <>
+                    <button className="btn btn-danger">Cancel</button>
+                    <button className="btn btn-success">Finish</button>
+                  </>
+                )}
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
 }
 
 export default AppointmentList;

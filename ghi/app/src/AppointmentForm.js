@@ -7,7 +7,7 @@ function AppointmentForm() {
     const [reason, setReason] = useState('');
     const [status, setStatus] = useState('');
     const [customer, setCustomer] = useState('');
-    const [technician, setTechnician] = useState('');
+    const [technician, setTechnician] = useState([]);
 
     const handleDate_TimeChange = (event) => {
         setDate_Time(event.target.value);
@@ -37,8 +37,9 @@ function AppointmentForm() {
         data.status = status;
         data.customer = customer;
         data.technician = technician;
-
+        console.log("before:", response.ok)
         const appointmentUrl = 'http://localhost:8080/api/appointments/';
+        console.log("after:", response.ok)
         const fetchConfig = {
             method: 'post',
             body: JSON.stringify(data),
@@ -61,11 +62,9 @@ function AppointmentForm() {
     const fetchData = async () => {
         const url = 'http://localhost:8080/api/technicians/'
         const response = await fetch(url);
-        console.log("before tech:", response.ok)
         if (response.ok) {
-            console.log("after tech:", response.ok)
-            const data= await response.json();
-            setTechnician(data.techician);
+            const data = await response.json();
+            setTechnician(data.techicians);
         }
     }
 
@@ -78,7 +77,7 @@ function AppointmentForm() {
         <div className="row">
         <div className="offset-3 col-6">
             <div className="shadow p-4 mt-4">
-            <h1>Create a new hat</h1>
+            <h1>Create an Appointment</h1>
             <form onSubmit={handleSubmit} id="create-appointment-form">
                 <div className="form-floating mb-3">
                 <input
