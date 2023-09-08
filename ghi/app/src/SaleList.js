@@ -7,10 +7,10 @@ const SaleList = () => {
   const fetchData = async () => {
     const url = 'http://localhost:8090/api/sales/';
     const response = await fetch(url);
-    console.log("response ok?", response.ok);
+
     if (response.ok) {
       const data = await response.json();
-      setSales(data.salespersons);
+      setSales(data.sales);
     }
   }
 
@@ -40,7 +40,7 @@ const SaleList = () => {
                 <td>{sale.salesperson.first_name} {sale.salesperson.last_name}</td>
                 <td>{sale.customer.first_name} {sale.customer.last_name}</td>
                 <td>{sale.automobile.vin}</td>
-                <td>{sale.price}</td>
+                <td>${sale.price}</td>
               </tr>
             )
           })}
