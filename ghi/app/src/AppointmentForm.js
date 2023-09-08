@@ -3,22 +3,23 @@ import React, { useState, useEffect } from 'react';
 
 
 function AppointmentForm() {
-    const [date_time, setDate_Time] = useState('');
+    const [vin, setVin] = useState('');
+    const [dateTime, setDateTime] = useState('');
     const [reason, setReason] = useState('');
-    const [status, setStatus] = useState('');
     const [customer, setCustomer] = useState('');
-    const [technician, setTechnician] = useState([]);
+    const [technician, setTechnician] = useState('');
+    const [technicians, setTechnicians] = useState([]);
 
-    const handleDate_TimeChange = (event) => {
-        setDate_Time(event.target.value);
+    const handleVinChange = (event) => {
+        setVin(event.target.value);
+    }
+
+    const handleDateTimeChange = (event) => {
+        setDateTime(event.target.value);
     }
 
     const handleReasonChange = (event) => {
         setReason(event.target.value);
-    }
-
-    const handleStatusChange = (event) => {
-        setStatus(event.target.value);
     }
 
     const handleCustomerChange = (event) => {
@@ -32,14 +33,13 @@ function AppointmentForm() {
     const handleSubmit = async (event) => {
         event.preventDefault();
         const data = {};
-        data.date_time = date_time;
+        data.vin = vin;
+        data.date_time = dateTime;
         data.reason = reason;
-        data.status = status;
         data.customer = customer;
-        data.technician = technician;
-        console.log("before:", response.ok)
+        data.technician_id = technician;
+
         const appointmentUrl = 'http://localhost:8080/api/appointments/';
-        console.log("after:", response.ok)
         const fetchConfig = {
             method: 'post',
             body: JSON.stringify(data),
@@ -48,12 +48,10 @@ function AppointmentForm() {
             },
         };
         const response = await fetch(appointmentUrl, fetchConfig);
-        console.log("before app:", response.ok)
         if (response.ok) {
-            console.log("after app:", response.ok)
-            setDate_Time('');
+            setVin('');
+            setDateTime('');
             setReason('');
-            setStatus('');
             setCustomer('');
             setTechnician('');
         }
@@ -64,7 +62,7 @@ function AppointmentForm() {
         const response = await fetch(url);
         if (response.ok) {
             const data = await response.json();
-            setTechnician(data.techicians);
+            setTechnicians(data.technicians);
         }
     }
 
@@ -78,19 +76,32 @@ function AppointmentForm() {
         <div className="offset-3 col-6">
             <div className="shadow p-4 mt-4">
             <h1>Create an Appointment</h1>
+            <div className="form-floating mb-3">
+                <input
+                    onChange={handleVinChange}
+                    placeholder="Vin"
+                    required
+                    type="text"
+                    name="vin"
+                    id="vin"
+                    className="form-control"
+                    value={vin}
+                />
+                <label htmlFor="vin">Automible VIN</label>
+                </div>
             <form onSubmit={handleSubmit} id="create-appointment-form">
                 <div className="form-floating mb-3">
                 <input
-                    onChange={handleDate_TimeChange}
+                    onChange={handleDateTimeChange}
                     placeholder="Pick Date and Time"
                     required
                     type="datetime-local"
-                    name="date_time"
-                    id="date_time"
+                    name="datetime"
+                    id="datetime"
                     className="form-control"
-                    value={date_time}
+                    value={dateTime}
                 />
-                <label htmlFor="date_time">Date and Time</label>
+                <label htmlFor="datetime">Date and Time</label>
                 </div>
                 <div className="form-floating mb-3">
                 <input
@@ -121,6 +132,7 @@ function AppointmentForm() {
                 <div className="mb-3">
                 <select
                     onChange={handleTechnicianChange}
+                    placeholder="Technician"
                     required
                     name="technician"
                     id="technician"
@@ -128,13 +140,13 @@ function AppointmentForm() {
                     value={technician}
                 >
                     <option value="">Choose a Technician</option>
-                    {technician.map(technician => {
-                    return (
-                        <option key={technician.href} value={technician.href}>
-                        {technician.first_name}
-                        </option>
-                    );
-                    })}
+                    {technicians.map(technician => {
+                        return (
+                            <option key={technician.employee_id} value={technician.employee_id}>
+                            {technician.first_name} {technician.last_name}
+                            </option>
+                        );
+                        })}
                 </select>
                 </div>
                 <button className="btn btn-primary">Create</button>

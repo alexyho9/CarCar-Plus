@@ -31,6 +31,36 @@ function AppointmentList() {
     }
   }
 
+  const cancelApp = async (appointmentId) => {
+    try {
+      const url = `http://localhost:8080/api/appointments/${appointmentId}/cancel/`
+      const response = await fetch(url, { method: 'PUT'});
+
+      if (response.ok) {
+        fetchAppointments();
+      } else {
+        console.error(response.status);
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const finishApp = async (appointmentId) => {
+    try {
+      const url = `http://localhost:8080/api/appointments/${appointmentId}/finish/`
+      const response = await fetch(url, { method: 'PUT'});
+
+      if (response.ok) {
+        fetchAppointments();
+      } else {
+        console.error(response.status)
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
 
   useEffect(() => {
     fetchAppointments();
@@ -68,8 +98,8 @@ function AppointmentList() {
               <td>
                 {appointment.status === 'created' && (
                   <>
-                    <button className="btn btn-danger">Cancel</button>
-                    <button className="btn btn-success">Finish</button>
+                    <button className="btn btn-danger" onClick= {() => cancelApp(appointment.id)}>Cancel</button>
+                    <button className="btn btn-success" onClick= {() => finishApp(appointment.id)}>Finish</button>
                   </>
                 )}
               </td>
