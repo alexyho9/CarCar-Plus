@@ -85,7 +85,7 @@ function AppointmentList() {
           </tr>
         </thead>
         <tbody>
-          {appointments.map(appointment => (
+          {appointments.filter(app => app.status === 'created').map(appointment => (
             <tr key={appointment.href}>
               <td>{appointment.vin}</td>
               <td>{appointment.vip_status ? "Yes" : "No"}</td>
