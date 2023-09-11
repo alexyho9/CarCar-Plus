@@ -26,6 +26,22 @@ def get_autos():
                  },
             )
 
+def get_customers():
+    response = requests.get("http://project-beta-sales-api-1:8000/api/customers/")
+    content = json.loads(response.content)
+
+    for customer in content["customers"]:
+            AutomobileVO.objects.update_or_create(
+                 import_href=customer["href"],
+                 defaults={
+                      "first_name": customer["first_name"],
+                      "last_name": customer["last_name"],
+                      "address": customer["address"],
+                      "phone_number": customer["phone_number"],
+                 },
+            )
+
+
 
 
 def poll(repeat=True):
@@ -33,6 +49,7 @@ def poll(repeat=True):
         print('Service poller polling for data')
         try:
             get_autos()
+            # get_customers()
         except Exception as e:
             print(e, file=sys.stderr)
 
