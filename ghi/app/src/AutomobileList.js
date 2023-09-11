@@ -1,5 +1,4 @@
-import React, {useEffect, useState} from 'react';
-
+import React, { useEffect, useState } from 'react';
 
 const AutomobileList = () => {
   const [autos, setAutos] = useState([]);
@@ -49,4 +48,5 @@ const AutomobileList = () => {
     </div>
   )
 }
+
 export default AutomobileList;

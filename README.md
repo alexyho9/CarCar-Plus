@@ -194,6 +194,40 @@ The list of salespeople is a dictionary with the key "salespersons" set to a lis
 | Update a specific customer | PUT | `http://localhost:8090/api/customers/:pk/` |
 | Delete a specific customer | DELETE | `http://localhost:8090/api/customers/:pk/` |
 
+Creating or updating a customer:
+
+    {
+        "first_name": "Harry",
+        "last_name": "Potter",
+        "address": "456 Market St, San Francisco, CA",
+        "phone_number": "4156760000"
+    }
+
+The return value of creating, getting, and updating a single salesperson:
+
+    {
+        "href": "/api/customers/2/",
+        "first_name": "Harry",
+        "last_name": "Potter",
+        "address": "456 Market St, San Francisco, CA",
+        "phone_number": "4156760000"
+    }
+
+Getting a list of vehicle models returns a list of the detail information with the key "customers".
+
+    {
+        "customers": [
+            {
+                "href": "/api/customers/1/",
+                "id": 1,
+                "first_name": "Jason",
+                "last_name": "Bourne",
+                "address": "555 California St, San Francisco, CA",
+                "phone_number": "5553270000"
+            }
+        ]
+    }
+
 
 #### Sale Model
 
@@ -204,3 +238,68 @@ The list of salespeople is a dictionary with the key "salespersons" set to a lis
 | Get a specific sale | GET | `http://localhost:8090/api/sales/:pk/` |
 | Update a specific sale | PUT | `http://localhost:8090/api/sales/:pk/` |
 | Delete a specific sale | DELETE | `http://localhost:8090/api/sales/:pk/` |
+
+Creating or updating a sale:
+
+    {
+        "automobile_vin": "SCBCR63W55C024793",
+        "salesperson_id": "cmach",
+        "customer_id": 1,
+        "price": 45500
+    }
+
+The return value of creating, getting, and updating a single sale:
+
+    {
+        "href": "/api/sales/3/",
+        "automobile": {
+            "vin": "SCBCR63W55C024793",
+            "sold": false,
+            "import_href": "/api/automobiles/SCBCR63W55C024793/"
+        },
+        "salesperson": {
+            "href": "/api/salespeople/cmach/",
+            "employee_id": "cmach",
+            "first_name": "Calvin",
+            "last_name": "Mach"
+        },
+        "customer": {
+            "href": "/api/customers/1/",
+            "first_name": "Jason",
+            "last_name": "Bourne",
+            "address": "555 California St, San Francisco, CA",
+            "phone_number": "5553270000"
+        },
+        "price": 45500
+    }
+
+Getting a list of sales returns a list of the detail information with the key "sales":
+
+    {
+        "sales": [
+            {
+                "href": "/api/sales/3/",
+                "id": 3,
+                "automobile": {
+                    "vin": "SCBCR63W55C024793",
+                    "sold": false,
+                    "import_href": "/api/automobiles/SCBCR63W55C024793/"
+                },
+                "salesperson": {
+                    "href": "/api/salespeople/cmach/",
+                    "employee_id": "cmach",
+                    "first_name": "Calvin",
+                    "last_name": "Mach"
+                },
+                "customer": {
+                    "href": "/api/customers/1/",
+                    "id": 1,
+                    "first_name": "Jason",
+                    "last_name": "Bourne",
+                    "address": "555 California St, San Francisco, CA",
+                    "phone_number": "5553270000"
+                },
+                "price": 45500
+            },
+        ]
+    }
