@@ -86,6 +86,40 @@ The list of salespeople is a dictionary with the key "salespersons" set to a lis
 | Update a specific customer | PUT | `http://localhost:8090/api/customers/:pk/` |
 | Delete a specific customer | DELETE | `http://localhost:8090/api/customers/:pk/` |
 
+Creating or updating a customer:
+
+    {
+        "first_name": "Harry",
+        "last_name": "Potter",
+        "address": "456 Market St, San Francisco, CA",
+        "phone_number": "4156760000"
+    }
+
+The return value of creating, getting, and updating a single salesperson:
+
+    {
+        "href": "/api/customers/2/",
+        "first_name": "Harry",
+        "last_name": "Potter",
+        "address": "456 Market St, San Francisco, CA",
+        "phone_number": "4156760000"
+    }
+
+Getting a list of vehicle models returns a list of the detail information with the key "customers".
+
+    {
+        "customers": [
+            {
+                "href": "/api/customers/1/",
+                "id": 1,
+                "first_name": "Jason",
+                "last_name": "Bourne",
+                "address": "555 California St, San Francisco, CA",
+                "phone_number": "5553270000"
+            }
+        ]
+    }
+
 
 #### Sale Model
 
