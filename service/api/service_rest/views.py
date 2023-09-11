@@ -77,7 +77,7 @@ def api_appointments(request):
             sold_car = AutomobileVO.objects.filter(vin=form_vin, sold=True).first()
             # If there is a match and sold_car is not set to None then do the following.
             if sold_car:
-                appointment.vip_status = True
+                appointment.vip = True
                 appointment.save()
 
             return JsonResponse(
@@ -100,6 +100,7 @@ def api_appointment(request, pk):
             appointment = Appointment.objects.get(id=pk)
             appointment.delete()
             return JsonResponse(
+                appointment,
                 encoder=AppointmentEncoder,
                 safe=False,
             )

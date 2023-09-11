@@ -96,7 +96,7 @@ function AppointmentList() {
               <td>{appointment.reason}</td>
               <td>{appointment.status}</td>
               <td>
-                {appointment.status === 'created' && (
+                {(
                   <>
                     <button className="btn btn-danger" onClick= {() => cancelApp(appointment.id)}>Cancel</button>
                     <button className="btn btn-success" onClick= {() => finishApp(appointment.id)}>Finish</button>
