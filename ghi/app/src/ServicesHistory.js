@@ -47,61 +47,62 @@ function ServicesHistory() {
       setSearchPerformed(true);
     };
 
-const appmap = searchPerformed ? filteredAppointments : appointments;
+    let appmap = searchPerformed ? filteredAppointments : appointments;
 
-      return (
-        <div className="shadow p-4 mt-4">
-          <h1>Service History</h1>
-          <form onSubmit={handleSearchSubmit} className="mb-3">
-            <div className="input-group">
-              <input
-                type="text"
-                className="form-control"
-                placeholder="Enter VIN"
-                value={searchVin}
-                onChange={(e) => setSearchVin(e.target.value)}
-                />
-                <button type="submit" className="btn btn-primary">
-                  Search
-                </button>
-            </div>
-          </form>
-          <table className="table table-striped">
-            <thead>
+    return (
+      <div className="shadow p-4 mt-4">
+        <h1>Service History</h1>
+        <form onSubmit={handleSearchSubmit} className="mb-3">
+          <div className="input-group">
+            <input
+              type="text"
+              id="vin"
+              className="form-control"
+              placeholder="Enter VIN"
+              value={searchVin}
+              onChange={(e) => setSearchVin(e.target.value)}
+              />
+              <button type="submit" className="btn btn-primary">
+                Search
+              </button>
+          </div>
+        </form>
+        <table className="table table-striped">
+          <thead>
+            <tr>
+              <th>VIN</th>
+              <th>Is VIP?</th>
+              <th>Customer</th>
+              <th>Date</th>
+              <th>Time</th>
+              <th>Technician</th>
+              <th>Reason</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            {searchPerformed && filteredAppointments.length === 0 ? (
               <tr>
-                <th>VIN</th>
-                <th>Is VIP?</th>
-                <th>Customer</th>
-                <th>Date</th>
-                <th>Time</th>
-                <th>Technician</th>
-                <th>Reason</th>
-                <th>Status</th>
+                <td colSpan="9">Appointments not found</td>
               </tr>
-            </thead>
-            <tbody>
-              {searchPerformed && filteredAppointments.length === 0 ? (
-                <tr>
-                  <td colSpan="9">Appointments not found</td>
-                </tr>
-              ) : (
-                appmap.map((appointment) => (
-                <tr key={appointment.href}>
-                  <td>{appointment.vin}</td>
-                  <td>{appointment.vip ? "Yes" : "No"}</td>
-                  <td>{appointment.customer}</td>
-                  <td>{formatDate(appointment.date_time)}</td>
-                  <td>{formatTime(appointment.date_time)}</td>
-                  <td>{appointment.technician.first_name} {appointment.technician.last_name}</td>
-                  <td>{appointment.reason}</td>
-                  <td>{appointment.status}</td>
-                </tr>
-              ))
-            )}
-            </tbody>
-          </table>
-        </div>
-      );
+            ) : (
+              appmap.map((appointment) => (
+              <tr key={appointment.href}>
+                <td>{appointment.vin}</td>
+                <td>{appointment.vip ? "Yes" : "No"}</td>
+                <td>{appointment.customer}</td>
+                <td>{formatDate(appointment.date_time)}</td>
+                <td>{formatTime(appointment.date_time)}</td>
+                <td>{appointment.technician.first_name} {appointment.technician.last_name}</td>
+                <td>{appointment.reason}</td>
+                <td>{appointment.status}</td>
+              </tr>
+            ))
+          )}
+          </tbody>
+        </table>
+      </div>
+    );
 }
 
 export default ServicesHistory;
