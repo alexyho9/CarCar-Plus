@@ -504,7 +504,13 @@ Finally, on the **service history** displays all appointments regardless of stat
 
 #### Sales
 
-Create instructions here.
+First, in order for a sale to happen, we need to add and register salespeople into the system. This can be done through the "Add Salesperson" page. Afterwards, we can verify that the salesperson has been added by clicking on the "Salespeople" list page.
+
+Secondly, we need to have a registered customer in order to have a sale. We can register a customer using the "Add Customer" page. Afterwards, we can verify the customer has been added on the "Customer" list page.
+
+Lastly, in order to record a new sales transaction, we visit the "Add Sale" page. We must select an existing vehicle from inventory, a salesperson, and a customer. A sales price should also be added, and then the sale can then be recorded with the "create" button.
+
+After the sales transactions are recorded, we can view the sales history through the "sales" page. We can also filter the sales done by individual salespeople with the "Salesperson History" page.
 
 #### Inventory
 
