@@ -32,11 +32,11 @@ function App() {
         <Route path="/" element={<MainPage />} />
         <Route path="inventory">
           <Route path="manufacturers" element={<ManufacturerList />} />
-          <Route path="manufacturers/new" element={<ManufacturerForm />} />
+          <Route path="manufacturers-new" element={<ManufacturerForm />} />
           <Route path="models" element={<ModelList />} />
-          <Route path="models/new" element={<ModelForm />} />
+          <Route path="models-new" element={<ModelForm />} />
           <Route path="automobiles" element={<AutomobileList />} />
-          <Route path="automobiles/new" element={<AutomobileForm />} />
+          <Route path="automobiles-new" element={<AutomobileForm />} />
         </Route>
         <Route path="services">
           <Route path="technicians" element={<TechnicianList />} />
@@ -47,12 +47,12 @@ function App() {
         </Route>
         <Route path="sales">
           <Route path="salespeople" element={<SalespeopleList />} />
-          <Route path="salespeople/new" element={<SalespeopleForm />} />
+          <Route path="salesperson-history" element={<SalespersonHistory />} />
+          <Route path="salespeople-new" element={<SalespeopleForm />} />
           <Route path="customers" element={<CustomerList />} />
-          <Route path="customers/new" element={<CustomerForm />} />
+          <Route path="customers-new" element={<CustomerForm />} />
           <Route path="sales" element={<SaleList />} />
-          <Route path="sales/new" element={<SaleForm />} />
-          <Route path="sales/history" element={<SalespersonHistory />} />
+          <Route path="sales-new" element={<SaleForm />} />
         </Route>
       </Routes>
       </div>

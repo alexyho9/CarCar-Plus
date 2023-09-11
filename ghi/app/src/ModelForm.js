@@ -83,10 +83,10 @@ const ModelForm = () => {
               <option value="">Choose a Manufacturer</option>
               {manufacturers.map(manufacturer => {
                 return (
-                <option value={manufacturer.id} key={manufacturer.name}>
-                  {manufacturer.name}
-                </option>
-                  );
+                  <option value={manufacturer.id} key={manufacturer.name}>
+                    {manufacturer.name}
+                  </option>
+                );
               })}
             </select>
           </div>
@@ -96,6 +96,6 @@ const ModelForm = () => {
       </div>
     </div>
 
-);
+  );
 }
 export default ModelForm;
