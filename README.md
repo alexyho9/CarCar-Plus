@@ -21,8 +21,116 @@
 
 ## Service microservice
 
-Explain your models and integration with the inventory
-microservice, here.
+### Models
+
+- AutomobileVO (imported from Inventory API)
+- Technician
+- Appointments
+
+### API
+
+#### Technician Model
+| Action | Method | URL |
+| ------ | ------ | --- |
+| List technicians | GET | http://localhost:8080/api/technicians/ |
+| Create technician | POST | http://localhost:8080/api/technicians/ |
+| Delete technician | DELETE | http://localhost:8080/api/technicians/{employee_id}/ |
+
+Create a **technician**:
+
+    {
+        "first_name": "Bobby",
+        "last_name": "Hill",
+        "employee_id": "bh32"
+    }
+
+Return value of create a **technician**:
+
+    {
+	    "first_name": "Bobby",
+	    "last_name": "Hill",
+	    "employee_id": "bh32"
+    }
+
+Return value of all **technician** list:
+
+    "technicians": [
+        {
+            "first_name": "Bobby",
+            "last_name": "Hill",
+            "employee_id": "bh32"
+        }
+    ]
+
+#### Appointment Model
+
+| Action | Method | URL |
+| ------ | ------ | --- |
+| List appointments | GET | http://localhost:8080/api/appointments/ |
+| Create appointment | POST | http://localhost:8080/api/appointments/ |
+| Delete appointment | DELETE | http://localhost:8080/api/appointments/:id/ |
+| Set apppointment status "canceled" | PUT | http://localhost:8080/api/appointments/:id/cancel/ |
+| Set apppointment status "finished" | PUT | http://localhost:8080/api/appointments/:id/finish/ |
+
+Create an **appointment**:
+
+    {
+        "reason": "Oil Change",
+        "date_time":  "2023-11-01T11:45",
+        "customer": "Bert McCracken",
+        "technician_id": "bh32",
+	    "vin": "5FCDU97K2LA088465"
+    }
+
+Return value of create an **appointment**:
+
+    {
+        "href": "/api/appointments/1/",
+        "id": 1,
+        "vin": "5FCDU97K2LA088465",
+        "vip": false,
+        "date_time": "2023-11-01T11:45",
+        "reason": "Oil Change",
+        "status": "created",
+        "customer": "Bert McCracken",
+        "technician": {
+            "first_name": "Bobby",
+            "last_name": "Hill",
+            "employee_id": "bh32"
+        }
+    }
+
+Return value of all **appointments**:
+
+    {
+        "appointments": [
+            {
+                "href": "/api/appointments/1/",
+                "id": 1,
+                "vin": "2BCHV81S4JB533621",
+                "vip": false,
+                "date_time": "2023-09-23T12:15:00+00:00",
+                "reason": "oil change",
+                "status": "cancelled",
+                "customer": "Bobby Hill",
+                "technician": {
+                    "first_name": "Bobby",
+                    "last_name": "Hill",
+                    "employee_id": "yimp"
+            }
+        ]
+    }
+
+Return value of a cancel/finish **appointment**:
+
+    {
+        "customer": "Bert McCracken",
+        "reason": "oil change",
+        "date_time": "2023-11-01T11:45",
+        "status": "cancelled"
+        // OR
+        "status": "finished"
+    }
 
 ## Sales microservice
 
