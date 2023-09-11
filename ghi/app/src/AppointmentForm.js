@@ -87,7 +87,7 @@ function AppointmentForm() {
                     className="form-control"
                     value={vin}
                 />
-                <label htmlFor="vin">Automible VIN</label>
+                <label htmlFor="vin">Automobile VIN</label>
                 </div>
             <form onSubmit={handleSubmit} id="create-appointment-form">
                 <div className="form-floating mb-3">

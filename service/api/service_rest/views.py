@@ -68,6 +68,18 @@ def api_appointments(request):
             del content["technician_id"]
             appointment = Appointment.objects.create(**content)
 
+            # write a function to check appointment vin and automobilevo
+            # Define the appointment vin number to use later
+            form_vin = content["vin"]
+            # Set function of sold_car to filter automobile vin to equal to appointment vin
+            # and to check if sold is True. Set first() to get the first object from the
+            # filter that matches and if it doesn't, set to None.
+            sold_car = AutomobileVO.objects.filter(vin=form_vin, sold=True).first()
+            # If there is a match and sold_car is not set to None then do the following.
+            if sold_car:
+                appointment.vip_status = True
+                appointment.save()
+
             return JsonResponse(
                 appointment,
                 encoder=AppointmentEncoder,
